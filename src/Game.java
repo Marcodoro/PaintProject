@@ -14,19 +14,17 @@ public class Game {
     private Button pink;
     private Button radieren;
 
-
     public Game() {
         screen = new Bildschirm(1280, 720);
         pen = new Buntstift();
         key = new Tastatur();
         mouse = new Maus();
-        yellow = new Button();
-        green = new Button();
-        blue = new Button();
-        orange = new Button();
-        pink = new Button();
-        radieren = new Button();
-
+        yellow = new Button(100, 100, 100, 100, Farbe.GELB);
+        green = new Button(300, 100, 100, 100, Farbe.GRUEN);
+        blue = new Button(500, 100, 100, 100, Farbe.BLAU);
+        orange = new Button(700, 100, 100, 100, Farbe.ORANGE);
+        pink = new Button(900, 100, 100, 100, Farbe.PINK);
+        radieren = new Button(1100, 100, 100, 100, Farbe.SCHWARZ);
 
         pen.setzeLinienBreite(10);
         pen.setzeFarbe(Color.BLACK);
@@ -37,23 +35,23 @@ public class Game {
     }
     public void erstelleButtons() {
 
-        yellow.drawButton(100, 100, 100, 100, pen, Farbe.GELB);
-        green.drawButton(300, 100, 100, 100, pen, Farbe.GRUEN);
-        blue.drawButton(500, 100, 100, 100, pen, Farbe.BLAU);
-        orange.drawButton(700, 100, 100, 100, pen, Farbe.ORANGE);
-        pink.drawButton(900, 100, 100, 100, pen, Farbe.PINK);
-        radieren.drawButton(1100, 100, 100, 100, pen, Farbe.SCHWARZ);
+        yellow.drawButton(pen);
+        green.drawButton(pen);
+        blue.drawButton(pen);
+        orange.drawButton(pen);
+        pink.drawButton(pen);
+        radieren.drawButton(pen);
 
     }
     public void checkCollisionButtons(Button buttons) {
         int mouseX = mouse.hPosition();
         int mouseY = mouse.vPosition();
 
-        if (mouseX >= buttons.x && mouseX <= buttons.x + buttons.sizeX && mouseY >= buttons.y && mouseY <= buttons.y + buttons.sizeY) {
+        if (mouseX >= buttons.getX() && mouseX <= buttons.getX() + buttons.getSizeX() && mouseY >= buttons.getY() && mouseY <= buttons.getY() + buttons.getSizeY()) {
 
             if (mouse.istGedrueckt()) {
                 pen.hoch();
-                switch (buttons.color) {
+                switch (buttons.getColor()) {
                     case Farbe.GELB:
                         pen.normal();
                         pen.setzeLinienBreite(10);
