@@ -34,7 +34,6 @@ public class Game {
         malen();
     }
     public void erstelleButtons() {
-
         yellow.drawButton(pen);
         green.drawButton(pen);
         blue.drawButton(pen);
@@ -51,37 +50,12 @@ public class Game {
 
             if (mouse.istGedrueckt()) {
                 pen.hoch();
-                switch (buttons.getColor()) {
-                    case Farbe.GELB:
-                        pen.normal();
-                        pen.setzeLinienBreite(10);
-                        pen.setzeFarbe(Farbe.GELB);
-                        break;
-                    case Farbe.GRUEN:
-                        pen.normal();
-                        pen.setzeLinienBreite(10);
-                        pen.setzeFarbe(Farbe.GRUEN);
-                        break;
-                    case Farbe.BLAU:
-                        pen.normal();
-                        pen.setzeLinienBreite(10);
-                        pen.setzeFarbe(Farbe.BLAU);
-                        break;
-                    case Farbe.ORANGE:
-                        pen.normal();
-                        pen.setzeLinienBreite(10);
-                        pen.setzeFarbe(Farbe.ORANGE);
-                        break;
-                    case Farbe.PINK:
-                        pen.normal();
-                        pen.setzeLinienBreite(10);
-                        pen.setzeFarbe(Farbe.PINK);
-                        break;
-                    case Farbe.SCHWARZ:
-                        pen.setzeLinienBreite(30);
-                        pen.radiere();
-                    default:
-                        break;
+                if (buttons.getColor() == 0) {
+                    pen.radiere();
+                }
+                else {
+                    pen.normal();
+                    pen.setzeFarbe(buttons.getColor());
                 }
             }
         }
