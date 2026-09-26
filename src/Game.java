@@ -1,6 +1,7 @@
 import sum.kern.*;
 import java.awt.*;
-
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
 public class Game {
     private Bildschirm screen;
@@ -8,6 +9,7 @@ public class Game {
     private Tastatur key;
     private Maus mouse;
     private Button[] buttons;
+    private int scrollRichtung = 0;
 
 
     public Game() {
@@ -24,6 +26,7 @@ public class Game {
 
         pen.setzeLinienBreite(10);
         pen.setzeFarbe(Color.BLACK);
+
 
         for (int i = 0; i < buttons.length; i++) {
             int xPosition = 100 + (i * 200);
@@ -77,7 +80,15 @@ public class Game {
             }
             else {
                 pen.hoch();
-            }
+            } /* TO BE FIXED SOON
+            screen.addMouseWheelListener(new MouseWheelListener() {
+                @Override
+                public void mouseWheelMoved(MouseWheelEvent e) {
+                    scrollRichtung = e.getWheelRotation();
+                    pen.setzeLinienBreite(pen.linienBreite() - scrollRichtung);
+                }
+            });
+            */
         }
     }
 }
