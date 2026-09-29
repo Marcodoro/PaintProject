@@ -8,13 +8,15 @@ public class Button {
     private int sizeX;
     private int sizeY;
     private int color;
+    private int breite;
 
-    public Button(int x, int y, int sizeX, int sizeY, int color) {
+    public Button(int x, int y, int sizeX, int sizeY, int color, int breite) {
         this.x = x;
         this.y = y;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.color = color;
+        this.breite = breite;
     }
     public void drawButton(Buntstift pen){
 
@@ -23,10 +25,12 @@ public class Button {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.color = color;
+        this.breite = breite;
 
         pen.bewegeBis(x, y);
         pen.runter();
         pen.setzeFarbe(color);
+        pen.setzeLinienBreite(breite);
         pen.zeichneRechteck(sizeX, sizeY);
         pen.setzeFarbe(Farbe.SCHWARZ);
         pen.hoch();
@@ -54,5 +58,8 @@ public class Button {
     }
     public void setColor(int newColor) {
         this.color = newColor;
+    }
+    public void setzeLinienBreite(int breite) {
+        this.breite = breite;
     }
 }
